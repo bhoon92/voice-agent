@@ -1,0 +1,19 @@
+{
+  "name": "voice-agent",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.27.0",
+  "scripts": {
+    "dev": "concurrently -n web,server -c blue,green \"pnpm dev:web\" \"pnpm dev:server\"",
+    "dev:web": "pnpm --filter web dev",
+    "dev:server": "pnpm --filter server start:dev",
+    "dev:agent": "pnpm --filter agent dev",
+    "dev:all": "concurrently -n web,server,agent -c blue,green,magenta \"pnpm dev:web\" \"pnpm dev:server\" \"pnpm dev:agent\"",
+    "build": "pnpm -r build",
+    "infra:up": "docker compose up -d",
+    "infra:down": "docker compose down"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
